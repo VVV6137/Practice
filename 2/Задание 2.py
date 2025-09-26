@@ -20,6 +20,12 @@ def components(n, e):
             dfs(node)
     return components - 1
 
-n, m = map(int, input().split())
-e = [tuple(map(int, input().split())) for _ in range(m)]
+l = input().split()
+n = int(l[0])
+m = int(l[1])
+e = []
+for _ in range(m):
+    l = input().split()
+    l = tuple(map(int,l))
+    e.append(l)
 print(components(n, e))
