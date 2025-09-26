@@ -1,7 +1,7 @@
-def snow(n, k, events):
+def snow(n, k, e):
     snow = [0] * (n + 1)
     results = []
-    for event in events:
+    for event in e:
         event_type = event[0]
         if event_type == 1:
             street_index = event[1]
@@ -14,9 +14,15 @@ def snow(n, k, events):
             results.append(total_snow)
     return results
 
-n, k = map(int, input().split())
-events = [list(map(int, input().split())) for _ in range(k)]
-results = snow(n, k, events)
-for result in results:
-    print(result)
+l = input().split()
+n = int(l[0])
+k = int(l[1])
+e = []
+for _ in range(k):
+    l = input().split()
+    l = list(map(int,l))
+    e.append(l)
+results = snow(n, k, e)
+for i in results:
+    print(i)
 
