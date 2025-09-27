@@ -15,14 +15,16 @@ def time(n, pyramid):
     return min_time, dp
 
 def path(n, pyramid, dp):
-    min_index = dp[n - 1].index(min(dp[n - 1]))
+    min_id = dp[n - 1].index(min(dp[n - 1]))
     path = []
-    current_index = min_index
+    curr_id = min_id
+    print(curr_id)
     for i in range(n - 1, -1, -1):
-        path.append(pyramid[i][current_index])
+        path.append(pyramid[i][curr_id])
+        print(i, curr_id)
         if i > 0:
-            if current_index > 0 and dp[i - 1][current_index - 1] < dp[i - 1][current_index]:
-                current_index -= 1
+            if curr_id > 0 and dp[i - 1][curr_id - 1] < dp[i - 1][curr_id]:
+                curr_id -= 1
 
     path.reverse()
     return path
@@ -39,3 +41,4 @@ time, dp = time(n, pyramid)
 path = path(n, pyramid, dp)
 print("Минимальное время пути:", time)
 print("Сам путь", " ".join(map(str, path)))
+
